@@ -28,3 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+// Language auto detecction
+if (navigator.language.startsWith("ar")) {
+  if (!location.href.includes("index-ar.html")) {
+    location.href = "index-ar.html";
+  }
+}
