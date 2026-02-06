@@ -6056,6 +6056,7 @@ a.text-theme:hover,
   min-width: 145px;
   padding: 21px 20px;
 }
+
 @media (max-width: 1199px) {
   .footer-widget.widget_meta a,
   .footer-widget.widget_pages a,
@@ -11201,7 +11202,7 @@ ul.comment-list .th-comment-item:first-child > .th-post-comment {
 .hero-style1 {
   position: relative;
   z-index: 6;
-  padding: 140px 0 219px 0;
+  padding: 120px 0 219px 0;
   max-width: 710px;
 }
 @media (min-width: 1922px) {
@@ -11219,7 +11220,7 @@ ul.comment-list .th-comment-item:first-child > .th-post-comment {
     top: 20px;
   }
   .hero-style1 {
-    padding: 140px 0;
+    padding: 80px 0;
   }
   .hero-title {
     font-size: 68px;
@@ -44065,66 +44066,227 @@ html[dir="rtl"] .text-center {
     transform: translateY(-2px);
 }
 
+
 /* =====================================================
-   RTL MOBILE FOOTER CENTER FIX
+   RTL FOOTER
 ===================================================== */
 
-@media (max-width: 991px) {
 
-  [dir="rtl"] .th-widget-contact,
-  [dir="rtl"] .contact-feature,
-  [dir="rtl"] .contact-feature .media-body {
-    margin: 0 auto !important;
-    padding: 0 !important;
+/* ===============================
+   Desktop RTL
+================================ */
 
-    text-align: center !important;
-    width: 100% !important;
+footer[dir="rtl"] {
+  direction: rtl;
+}
 
-    float: none !important;
+/* Titles */
+footer[dir="rtl"] .widget_title {
+  text-align: right;
+}
+
+/* Flip title underline */
+footer[dir="rtl"] .widget_title::before,
+footer[dir="rtl"] .widget_title::after {
+  left: auto !important;
+  right: 0 !important;
+  transform: scaleX(-1);
+}
+
+
+/* ===============================
+   Footer Menu Arrow (RTL)
+================================ */
+
+footer[dir="rtl"] .widget_nav_menu .menu li a {
+  position: relative;
+  padding-right: 22px !important;
+  padding-left: 0 !important;
+}
+
+footer[dir="rtl"] .widget_nav_menu .menu li a::before {
+  content: "";
+  position: absolute;
+
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+
+  width: 7px;
+  height: 7px;
+
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+
+  opacity: 0.7;
+}
+
+footer[dir="rtl"] .widget_nav_menu .menu li a:hover::before {
+  opacity: 1;
+  border-color: var(--theme-color);
+}
+
+
+/* ===============================
+   Mobile RTL
+================================ */
+
+@media (max-width: 767px) {
+
+  /* General text */
+  footer[dir="rtl"] .footer-widget,
+  footer[dir="rtl"] .about-text,
+  footer[dir="rtl"] .menu,
+  footer[dir="rtl"] .th-widget-contact {
+    text-align: right;
   }
 
-  [dir="rtl"] .contact-feature {
+  /* Logo stays centered */
+  footer[dir="rtl"] .about-logo {
+    text-align: center;
+  }
+
+  /* Social icons */
+  footer[dir="rtl"] .th-social {
+    justify-content: flex-end;
+  }
+
+
+  /* ===========================
+     Contact Section (Mobile)
+  =========================== */
+
+  /* Container */
+  footer[dir="rtl"] .th-widget-contact {
+    display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
+    align-items: flex-end !important;
   }
 
-  [dir="rtl"] .contact-feature .media-body * {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
-  [dir="rtl"] .contact-feature_label,
-  [dir="rtl"] .contact-feature_link {
-    display: block !important;
+  /* Row */
+  footer[dir="rtl"] .contact-feature {
     width: 100% !important;
-    text-align: center !important;
+    max-width: 340px;
+
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    text-align: right !important;
+    margin-bottom: 32px !important;
+  }
+
+  /* Icon */
+  footer[dir="rtl"] .contact-feature .icon-btn {
+    margin-left: 12px !important;
+    margin-right: 0 !important;
+    flex-shrink: 0;
+  }
+
+  /* Text */
+  footer[dir="rtl"] .contact-feature .media-body {
+    width: 100%;
+    text-align: right !important;
+  }
+
+  footer[dir="rtl"] .contact-feature_label {
+    margin-bottom: 6px !important;
+  }
+
+  footer[dir="rtl"] .contact-feature_link {
+    margin-top: 2px !important;
+  }
+
+
+  /* ===========================
+     Mobile Title Line
+  =========================== */
+
+  footer[dir="rtl"] .widget_title {
+    text-align: right !important;
+  }
+
+  footer[dir="rtl"] .widget_title::before,
+  footer[dir="rtl"] .widget_title::after {
+    left: auto !important;
+    right: 0 !important;
   }
 
 }
 
-/* =====================================================
-   RTL Mobile Footer Spacing Fix
-===================================================== */
+/* ===========================
+    Why Us Section Alignment
+=========================== */
+
+.two-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checklist.style2 ul {
+    padding: 0 20px 0 20px;
+    margin: 0;
+    list-style: none;
+}
+
+.checklist.style2 li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: start; 
+}
+
+.checklist.style2 li img {
+    width: 30px;
+    height: 30px;
+    margin-inline-end: 15px; 
+    flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+    .two-column {
+        flex-direction: column;
+    }
+}
+
+/* ===========================
+   Mobile Hero & About Us Padding
+=========================== */
 
 @media (max-width: 991px) {
+    .th-hero-wrapper.hero-1 {
+        padding-top: 60px;
+    }
+}
 
-  [dir="rtl"] .contact-feature {
-    margin-bottom: 32px !important;
-  }
+.checklist.style4 ul {
+    padding-inline-start: 0;
+    margin: 0;
+    list-style: none;
+}
 
-  [dir="rtl"] .contact-feature .icon-btn {
-    margin-bottom: 10px !important;
-  }
+.checklist.style4 li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: start; 
+}
 
-  [dir="rtl"] .contact-feature_label {
-    margin-bottom: 6px !important;
-  }
+.checklist.style4 li img {
+    margin-inline-end: 15px; 
+    flex-shrink: 0;
+}
 
-  [dir="rtl"] .contact-feature_link {
-    margin-top: 2px !important;
-  }
-
+@media (max-width: 991px) {
+    .checklist.style4 {
+        max-width: none;
+        margin-left: 0;
+        margin-right: 20px;
+    }
 }
